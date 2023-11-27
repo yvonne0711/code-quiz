@@ -1,13 +1,25 @@
-// iterate over the list of questions
-    // if a user clicked on an answer
-    // check the text of the answer (or maybe some data property)
-    // compare that value to the correct answer
-    // if (the thing the user answered is correct)
-    //    display correct!
-    // else
-    //    display incorrect
-    //    subtract time
+// start screen
+var startScreen = document.querySelector("#start-screen");
 
-    console.log(questions);
+// questions 
+var questions = document.querySelector("#questions");
 
-    localStorage.setItem("testItem", "abcdefghijkl");
+// timer
+var initTime = 60; 
+var timer = document.querySelector(".timer");
+
+
+// start quiz
+function startQuiz() {
+    // hide start screen
+    startScreen.classList.add("hide");
+    // and show the questions
+    questions.classList.remove("hide");
+    // and show the timer which is currently hidden
+    timer.classList.remove("hide");
+    
+
+}
+
+// click event on start button
+document.querySelector("#start").addEventListener("click", startQuiz);
