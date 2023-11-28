@@ -10,7 +10,7 @@ var choicesElement = document.querySelector("#choices");
 var questionNumber = 0;
 
 // timer
-var initTime = 5; 
+var initTime = 10; 
 var timerSection = document.querySelector(".timer");
 var timer = document.querySelector("#time");
 var time = initTime;
@@ -70,6 +70,38 @@ function displayQuestion() {
     }
 }
 
+
+// check answer of the question
+function checkAnswer(clickedChoice) {
+    // current question
+    var question = questions[questionNumber];
+    // check if the clicked button is correct
+    if (clickedChoice === question.correctAnswerIndex) {
+        console.log("Correct answer!");
+    } else {
+        console.log("Incorrect answer!");
+
+        // subtract the time by 10 seconds if it's incorrect
+        time -= 10;
+    }
+
+    // next question
+    questionNumber++;
+    nextQuestion();
+}
+
+
+// next questions
+function nextQuestion() {
+    // clear all text before moving onto the next question
+    choicesElement.textContent = "";
+    // check if there are more questions
+    if (questionNumber < questions.length) {
+        displayQuestion();
+    } else {
+        endQuiz();
+    }
+}
 
 
 // timer
