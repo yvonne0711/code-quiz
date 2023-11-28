@@ -21,6 +21,13 @@ var endScreenTitle = endScreen.querySelector('h2');
 var finalScore = document.querySelector("#final-score");
 var initialsTitle = document.querySelector("initials");
 
+// audio
+var correctAudio = new Audio('./assets/sfx/correct.wav');
+var incorrectAudio = new Audio('./assets/sfx/incorrect.wav');
+
+// feedback
+var feedbackSection = document.querySelector("#feedback");
+
 // start quiz
 function startQuiz() {
     // hide start screen
@@ -77,9 +84,11 @@ function checkAnswer(clickedChoice) {
     var question = questions[questionNumber];
     // check if the clicked button is correct
     if (clickedChoice === question.correctAnswerIndex) {
-        console.log("Correct answer!");
+        correctAudio.play();
+        displayFeedback("Correct");
     } else {
-        console.log("Incorrect answer!");
+        incorrectAudio.play();
+        displayFeedback("Incorrect");
 
         // subtract the time by 10 seconds if it's incorrect
         time -= 10;
@@ -88,6 +97,19 @@ function checkAnswer(clickedChoice) {
     // next question
     questionNumber++;
     nextQuestion();
+}
+
+
+// feedback
+function displayFeedback(message) {
+    // display message
+    feedbackSection.classList.remove("hide");
+    feedbackSection.textContent = message;
+    
+    // hide feedback
+    setTimeout(function () {
+        feedbackSection.classList.add("hide");
+    }, 300);
 }
 
 
