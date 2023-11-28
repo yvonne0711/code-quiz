@@ -15,6 +15,11 @@ var timerSection = document.querySelector(".timer");
 var timer = document.querySelector("#time");
 var time = initTime;
 
+// end screen
+var endScreen = document.querySelector("#end-screen");
+var endScreenTitle = endScreen.querySelector('h2');
+var finalScore = document.querySelector("#final-score");
+var initialsTitle = document.querySelector("initials");
 
 // start quiz
 function startQuiz() {
@@ -39,6 +44,7 @@ function startQuiz() {
 
 // function to display question
 function displayQuestion() {
+    // get the index of the question number from the array questions in questions.js
     var question = questions[questionNumber];
 
     // updates question 
@@ -64,12 +70,16 @@ function displayQuestion() {
     }
 }
 
+
+
 // timer
 function startTimer() {
     timer.textContent = time;
     var countdown = setInterval(function () {
         // if it reaches 0, clear the interval
         if (time < 0) {
+            // different text for when the time has ran out 
+            endScreenTitle.textContent = "Time is up.";
             // stops the timer
             clearInterval(countdown); 
             endQuiz();
@@ -80,6 +90,19 @@ function startTimer() {
         
     }, 1000); 
 }
+
+
+// end quiz
+function endQuiz() {
+    // time hide
+    timerSection.classList.add("hide");
+    // questions hide
+    questionSection.classList.add("hide");
+    // end screen show
+    endScreen.classList.remove("hide");
+
+    // final score
+};
 
 // click event on start button
 startButton.addEventListener("click", startQuiz);
