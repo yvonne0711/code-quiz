@@ -35,7 +35,7 @@ Deployed application: https://yvonne0711.github.io/code-quiz/
 ### What I learnt
 - Several HTML and JavaScript files all in one project
 - Adding event listeners on click of the start and answer buttons
-- Using the [audio ``.play()`` method](https://www.w3schools.com/jsref/met_audio_play.asp#:~:text=The%20play()%20method%20starts,%2C%20attached%20on%20the%20audio) for playing audio files
+- Using the [audio `.play()` method](https://www.w3schools.com/jsref/met_audio_play.asp#:~:text=The%20play()%20method%20starts,%2C%20attached%20on%20the%20audio) for playing audio files
 - Use of several functions and event listeners and event listeners within functions
 - Using the [classList property](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) to return the DOM to access the class attributes of an element e.g. using the `.add()` and `.remove()` methods
 - Use of `setInterval` for the timer
