@@ -10,8 +10,10 @@ var choicesElement = document.querySelector("#choices");
 var questionNumber = 0;
 
 // timer
-var initTime = 60; 
-var timer = document.querySelector(".timer");
+var initTime = 5; 
+var timerSection = document.querySelector(".timer");
+var timer = document.querySelector("#time");
+var time = initTime;
 
 
 // start quiz
@@ -21,12 +23,19 @@ function startQuiz() {
     // and show the questions
     questionSection.classList.remove("hide");
     // and show the timer which is currently hidden
-    timer.classList.remove("hide");
+    timerSection.classList.remove("hide");
     
+    // display initial time instead of 0
+    //timer.textContent = initTime;
+
     // display questions 
     displayQuestion();
 
+    // timer starts
+    startTimer();
+
 }
+
 
 // function to display question
 function displayQuestion() {
@@ -50,8 +59,27 @@ function displayQuestion() {
             checkAnswer(clickedChoice);
         });
 
+        // add these buttons as a child of the choices section
         choicesElement.appendChild(choicesButton);
     }
 }
+
+// timer
+function startTimer() {
+    timer.textContent = time;
+    var countdown = setInterval(function () {
+        // if it reaches 0, clear the interval
+        if (time < 0) {
+            // stops the timer
+            clearInterval(countdown); 
+            endQuiz();
+        } 
+        // decrease the time and display current time
+        timer.textContent = time;
+        time--;
+        
+    }, 1000); 
+}
+
 // click event on start button
 startButton.addEventListener("click", startQuiz);
