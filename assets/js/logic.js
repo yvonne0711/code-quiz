@@ -10,7 +10,7 @@ var choicesElement = document.querySelector("#choices");
 var questionNumber = 0;
 
 // timer
-var initTime = 10; 
+var initTime = 60; 
 var timerSection = document.querySelector(".timer");
 var timer = document.querySelector("#time");
 var time = initTime;
